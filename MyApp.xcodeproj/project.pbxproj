@@ -13,6 +13,10 @@
 		687930702B84D33500251379 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6879306E2B84D33500251379 /* Main.storyboard */; };
 		687930722B84D33600251379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 687930712B84D33600251379 /* Assets.xcassets */; };
 		687930752B84D33600251379 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 687930732B84D33600251379 /* LaunchScreen.storyboard */; };
+		6879307F2B84FE0600251379 /* APILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879307E2B84FE0600251379 /* APILoader.swift */; };
+		687930812B8513BC00251379 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687930802B8513BC00251379 /* UIImageView.swift */; };
+		687930842B851CE000251379 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 687930832B851CE000251379 /* SDWebImage */; };
+		687930862B851CE000251379 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 687930852B851CE000251379 /* SDWebImageMapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,8 @@
 		687930712B84D33600251379 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		687930742B84D33600251379 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		687930762B84D33600251379 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6879307E2B84FE0600251379 /* APILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoader.swift; sourceTree = "<group>"; };
+		687930802B8513BC00251379 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				687930862B851CE000251379 /* SDWebImageMapKit in Frameworks */,
+				687930842B851CE000251379 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +71,8 @@
 				687930712B84D33600251379 /* Assets.xcassets */,
 				687930732B84D33600251379 /* LaunchScreen.storyboard */,
 				687930762B84D33600251379 /* Info.plist */,
+				6879307E2B84FE0600251379 /* APILoader.swift */,
+				687930802B8513BC00251379 /* UIImageView.swift */,
 			);
 			path = MyApp;
 			sourceTree = "<group>";
@@ -83,6 +93,10 @@
 			dependencies = (
 			);
 			name = MyApp;
+			packageProductDependencies = (
+				687930832B851CE000251379 /* SDWebImage */,
+				687930852B851CE000251379 /* SDWebImageMapKit */,
+			);
 			productName = MyApp;
 			productReference = 687930652B84D33500251379 /* MyApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 6879305C2B84D33500251379;
+			packageReferences = (
+				687930822B851CE000251379 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 687930662B84D33500251379 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -140,6 +157,8 @@
 			files = (
 				6879306D2B84D33500251379 /* ViewController.swift in Sources */,
 				687930692B84D33500251379 /* AppDelegate.swift in Sources */,
+				6879307F2B84FE0600251379 /* APILoader.swift in Sources */,
+				687930812B8513BC00251379 /* UIImageView.swift in Sources */,
 				6879306B2B84D33500251379 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,11 +314,13 @@
 				DEVELOPMENT_TEAM = VNU8KKW4GG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,9 +328,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.edu.ukma.kataskin.MyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,11 +347,13 @@
 				DEVELOPMENT_TEAM = VNU8KKW4GG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,9 +361,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.edu.ukma.kataskin.MyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -363,6 +392,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		687930822B851CE000251379 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.11;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		687930832B851CE000251379 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 687930822B851CE000251379 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		687930852B851CE000251379 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 687930822B851CE000251379 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6879305D2B84D33500251379 /* Project object */;
 }

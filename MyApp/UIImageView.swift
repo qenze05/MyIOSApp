@@ -6,15 +6,13 @@
 //
 
 import UIKit
+import SDWebImage
 
-class UIImageView: UIImageView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+extension UIImageView {
+
+    func loadImage(urlString : String) {
+        self.sd_setImage(with: URL(string: urlString), placeholderImage: UIImage(named: "placeholder.png"))
     }
-    */
 
 }

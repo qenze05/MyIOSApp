@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "76904BA4-217F-4245-888B-7CCEBE07985D"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "95BDE198-DCB9-46F9-B165-D82A7C5549F3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyApp/APILoader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "fetchURLData(url:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "95BDE198-DCB9-46F9-B165-D82A7C5549F3 - 28a78c4733b4fbd2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyApp.APILoader.fetchURLData(url: Foundation.URL) async -&gt; Swift.Optional&lt;MyApp.APIData&gt;"
+                  moduleName = "MyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qenze/Projects/Swift/MyApp/MyApp/APILoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "95BDE198-DCB9-46F9-B165-D82A7C5549F3 - aacd247ecdc6be04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for MyApp.APILoader.fetchURLData(url: Foundation.URL) async -&gt; Swift.Optional&lt;MyApp.APIData&gt;"
+                  moduleName = "MyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qenze/Projects/Swift/MyApp/MyApp/APILoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "95BDE198-DCB9-46F9-B165-D82A7C5549F3 - 1a3b3d87061b2600"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for MyApp.APILoader.fetchURLData(url: Foundation.URL) async -&gt; Swift.Optional&lt;MyApp.APIData&gt;"
+                  moduleName = "MyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qenze/Projects/Swift/MyApp/MyApp/APILoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "1400">
+               </Location>
+               <Location
+                  uuid = "95BDE198-DCB9-46F9-B165-D82A7C5549F3 - 2de231e4fc72ea02"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for MyApp.APILoader.fetchURLData(url: Foundation.URL) async -&gt; Swift.Optional&lt;MyApp.APIData&gt;"
+                  moduleName = "MyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qenze/Projects/Swift/MyApp/MyApp/APILoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "1392">
+               </Location>
+               <Location
+                  uuid = "95BDE198-DCB9-46F9-B165-D82A7C5549F3 - 1a3b3d87061b2600"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for MyApp.APILoader.fetchURLData(url: Foundation.URL) async -&gt; Swift.Optional&lt;MyApp.APIData&gt;"
+                  moduleName = "MyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qenze/Projects/Swift/MyApp/MyApp/APILoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "1672">
+               </Location>
+               <Location
+                  uuid = "95BDE198-DCB9-46F9-B165-D82A7C5549F3 - 2de231e4fc72ea02"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for MyApp.APILoader.fetchURLData(url: Foundation.URL) async -&gt; Swift.Optional&lt;MyApp.APIData&gt;"
+                  moduleName = "MyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qenze/Projects/Swift/MyApp/MyApp/APILoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "1668">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
