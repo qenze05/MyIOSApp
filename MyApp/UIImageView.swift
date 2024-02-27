@@ -12,7 +12,7 @@ import SDWebImage
 extension UIImageView {
 
     func loadImage(urlString : String) {
-        self.sd_setImage(with: URL(string: urlString), placeholderImage: UIImage(named: "placeholder.png"))
+        self.sd_setImage(with: URL(string: urlString), placeholderImage: UIImage(named: "default_image.jpg"))
     }
 
 }

@@ -8,79 +8,83 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet private weak var PostView:UIView!
-    @IBOutlet weak var PostImage: UIImageView!
-    @IBOutlet weak var HeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var BookmarkButton: UIImageView!
-    @IBOutlet weak var TitleLabel: UILabel!
-    @IBOutlet weak var UserInfoLabel: UILabel!
-    @IBOutlet weak var TitleLabelHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var ButtonsPanel: UIView!
-    @IBOutlet weak var ShareButton: UIButton!
-    @IBOutlet weak var CommentButton: UIButton!
-    @IBOutlet weak var UpvotesButton: UIButton!
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    private var loadedPosts:[Child] = []
+    private let cellIdentifier = "post_cell"
+    private let segueIdentifier = "view_details"
+    private var apiLoader:APILoader?
+    
+    private var areNewPostsLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Task {
-            await loadPost()
+            await loadPosts()
         }
-        
     }
     
     override func viewDidLayoutSubviews() {
-        //TODO: Add scroll view to make the content look nice in landscape mode
-        TitleLabelHeight.constant = getTitleHeight(string: TitleLabel.text ?? "", width: PostView.frame.size.width-16, font: TitleLabel.font)
-        HeightConstraint.constant = 410 + TitleLabelHeight.constant - getTitleHeight(string: "", width: 100, font: TitleLabel.font)
     }
 
     
-    private func loadPost() async {
-        let data:APILoader? = APILoader(urlString: "https://www.reddit.com/", subreddit: "ios", limit: 1)
-        let fullURL = data?.getFullUrl()
-        
-        guard let url = fullURL, let posts = await data?.fetchURLData(url: url), !posts.isEmpty
-        else {return}
-        
-        let post = posts[0]
-        
-        UserInfoLabel.text = "u/\(post.data.authorFullname) • \(getTimeInHours(post.data.created))h ago • \(post.data.domain)"
-        
-        TitleLabel.text = post.data.title
-        
-        //to be changed
-        if post.data.saved {
-            BookmarkButton.tintColor = UIColor.systemYellow
-        } else {
-            BookmarkButton.tintColor = UIColor.label
+    private func loadPosts() async {
+        areNewPostsLoading = true
+        if apiLoader == nil {
+            apiLoader = APILoader(urlString: "https://www.reddit.com/", subreddit: "ios", limit: 10)
         }
         
-        UpvotesButton.titleLabel?.text = getFormattedNumber(post.data.score)
-        CommentButton.titleLabel?.text = getFormattedNumber(post.data.numComments)
+        let fullURL = apiLoader?.getFullUrl()
         
-        PostImage.loadImage(urlString: posts[0].data.url)
+        guard let url = fullURL, let posts = await apiLoader?.fetchURLData(url: url), !posts.1.isEmpty
+        else {return}
+        
+        if !posts.0.isEmpty {
+            apiLoader?.after = posts.0
+        }
+        loadedPosts += posts.1
+        tableView.reloadData()
+        areNewPostsLoading = false
+    }
+}
+
+extension ViewController:UITableViewDataSource, UITableViewDelegate {
+    
+    public static var selectedPost:Child?
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return loadedPosts.count
     }
     
-    private func getTimeInHours(_ seconds:Int) -> Int {
-        let timeInSeconds = Int(Date().timeIntervalSince1970) - seconds
-        return timeInSeconds/3600
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PostViewCell
+        cell.configure(post: loadedPosts[indexPath.row])
+        
+        return cell
     }
     
-    private func getFormattedNumber(_ num:Int) -> String {
+
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        DetailsViewController.post = loadedPosts[indexPath.row]
+        return indexPath
         
-        if num < 1000 { return String(num) }
-        else { return String(format: "%.1f", Double(num)/1000)}
     }
     
-    private func getTitleHeight(string:String, width: CGFloat, font: UIFont) -> CGFloat {
-        
-        
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = string.boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedString.Key.font: font], context: nil)
-        return boundingBox.height
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.contentSize.height
+        let offset = scrollView.contentOffset.y
+
+        if offset >= height - 544*3 && !areNewPostsLoading {
+            
+            print("Loading posts")
+            Task {
+                await loadPosts()
+            }
+        }
     }
     
     

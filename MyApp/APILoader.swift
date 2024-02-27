@@ -12,6 +12,7 @@ class APILoader {
     var url:URL
     var subreddit:String
     var limit:Int
+    var after:String?
     
     init() {
         url = URL(string:"https://www.reddit.com/")!
@@ -45,19 +46,25 @@ class APILoader {
         if limit > 0 {
             fullURL.append(queryItems: [URLQueryItem(name: "limit", value: String(limit))])
         }
+        if after != nil {
+            fullURL.append(queryItems: [URLQueryItem(name: "after", value: after)])
+
+        }
+        print(fullURL)
         return fullURL
     }
     
-    func fetchURLData(url:URL) async -> [Child]? {
+    func fetchURLData(url:URL) async -> (String, [Child])? {
         
         let data = try? await URLSession.shared.data(from:url)
 
-        guard let data else {
+        guard let data, let decoded = try? JSONDecoder().decode(Welcome.self, from:data.0)
+        else {
             print("Failed to load data from URL \(url)")
             return nil
         }
         
-        return try? JSONDecoder().decode(Welcome.self, from:data.0).data.children
+        return (decoded.data.after, decoded.data.children)
     }
     
 }
@@ -68,6 +75,7 @@ struct Welcome: Codable {
 
 // MARK: - WelcomeData
 struct WelcomeData: Codable {
+    let after:String
     let children: [Child]
 }
 
