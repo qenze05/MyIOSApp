@@ -67,6 +67,10 @@ class APILoader {
         return (decoded.data.after, decoded.data.children)
     }
     
+    static func getShareURL(domain:URL?, post:String) -> URL? {
+        return domain?.appending(path:post[post.index(post.startIndex, offsetBy: 1)..<post.endIndex])
+    }
+    
 }
 
 struct Welcome: Codable {
@@ -80,14 +84,21 @@ struct WelcomeData: Codable {
 }
 
 // MARK: - Child
-struct Child: Codable {
-    let data: ChildData
+struct Child: Codable, Equatable {
+    static func == (lhs: Child, rhs: Child) -> Bool {
+        return lhs.data.permalink == rhs.data.permalink
+           && lhs.data.authorFullname == rhs.data.authorFullname
+           && lhs.data.created == rhs.data.created
+           && lhs.data.domain == rhs.data.domain
+    }
+    
+    var data: ChildData
 }
 
 // MARK: - ChildData
 struct ChildData: Codable {
     let authorFullname: String
-    let saved: Bool
+    var saved: Bool = false
     let title: String
     let ups, score: Int
     let thumbnail: String
@@ -95,11 +106,11 @@ struct ChildData: Codable {
     let domain: String
     let numComments: Int
     let url: String
+    let permalink:String
 
     enum CodingKeys: String, CodingKey {
         case authorFullname = "author_fullname"
-        case saved, title, ups, score, thumbnail, created, domain
         case numComments = "num_comments"
-        case url
+        case saved, title, ups, score, thumbnail, created, domain, permalink, url
     }
 }

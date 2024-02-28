@@ -53,6 +53,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		680189472B8E797900074BD8 /* User Documents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "User Documents";
+			sourceTree = "<group>";
+		};
 		6879305C2B84D33500251379 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +79,7 @@
 		687930672B84D33500251379 /* MyApp */ = {
 			isa = PBXGroup;
 			children = (
+				680189472B8E797900074BD8 /* User Documents */,
 				683A14132B8D58EF00F790D1 /* default_image.jpg */,
 				687930682B84D33500251379 /* AppDelegate.swift */,
 				6879306A2B84D33500251379 /* SceneDelegate.swift */,
